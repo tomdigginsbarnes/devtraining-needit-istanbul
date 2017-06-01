@@ -39,11 +39,12 @@ if(isPast == true){
 	current.setAbortAction(true);
 }
 
-var isToday = niutils.isDateToday(current.u_when_needed);
+var isWithinAdvancedNoticeDays = niutils.isWithinAdvancedNoticeDays(current.u_when_needed);
 
 // If the isDatePast method returns true, the date is in the past.
-if(isToday == true){
-	gs.addErrorMessage("When needed date cannot be today.  Your request has not been saved to the database.");
+if(isWithinAdvancedNoticeDays == true){
+	var advancedNoticeDays = gs.getProperty('x_58872_needit.advancedNoticeDays');
+	gs.addErrorMessage("NeedIt requests require " + advancedNoticeDays + " days notice.  Your request has not been saved to the database.");
 	current.setAbortAction(true);
 }]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -53,7 +54,7 @@ if(isToday == true){
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4832aa1fdbbab200bb9771700f96196d</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>NeedIt When needed field date</sys_name>
         <sys_overrides/>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
@@ -62,7 +63,7 @@ if(isToday == true){
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
         <sys_update_name>sys_script_4832aa1fdbbab200bb9771700f96196d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-05-25 08:37:32</sys_updated_on>
+        <sys_updated_on>2017-06-01 08:57:08</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

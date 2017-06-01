@@ -24,15 +24,16 @@ NeedItUtils.prototype = {
 				return false;
 			}
 	},
-	isDateToday: function(strDate){
+	isWithinAdvancedNoticeDays: function(strDate){
 		//Create GlideDateTime objects for the current date and the passed in date
-		var rightnow = new GlideDateTime();
-		var testdate = new GlideDateTime(strDate);
-		var rightnowLocal = rightnow.getLocalDate();
-		var testdateLocal = testdate.getLocalDate();
-		// If the testdate has the same LocalDate as rightnow, return true, else return false
+		var advancedDate = new GlideDateTime();
+		var advancedNoticeDays = gs.getProperty('x_58872_needit.advancedNoticeDays');
+		advancedDate.addDaysLocalTime(advancedNoticeDays);
 		
-		if(testdateLocal.compareTo(rightnowLocal)==0){
+		var requestedDate = new GlideDateTime(strDate);
+		
+		
+		if(requestedDate.before(advancedDate)){
 			return true;
 		}
 		else {
@@ -46,7 +47,7 @@ NeedItUtils.prototype = {
         <sys_created_on>2017-05-24 14:37:36</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>52c04c7bdbf2f200bb9771700f961938</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>NeedItUtils</sys_name>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
         <sys_policy>read</sys_policy>
@@ -54,6 +55,6 @@ NeedItUtils.prototype = {
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
         <sys_update_name>sys_script_include_52c04c7bdbf2f200bb9771700f961938</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-05-30 09:12:48</sys_updated_on>
+        <sys_updated_on>2017-06-01 08:49:59</sys_updated_on>
     </sys_script_include>
 </record_update>
